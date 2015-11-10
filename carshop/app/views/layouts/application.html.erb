@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carshop</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+<nav id="nav">
+	<div id="page_nav">
+	/*
+	* Son los botones de las diferentes paginas
+	*/
+		<%= link_to "Salir", root_path %>
+		<%= link_to "Iniciar sesion", products_path %>
+		<%= link_to "Registrarse", page_faqs_path %>
+		<%= link_to "Contactos", page_contact_path %>
+	</div>
+
+		<div id="Iniciar Sesion">
+			<% if user_signed_in? %>
+				<%=  link_to "Salir", destroy_user_session_path, method: :delete %>
+			<% else %>
+				<%= link_to "Iniciar sesion", new_user_session_path %>
+				<%= link_to "Registrarse", new_user_registration_path %>
+			<%end%>
+		</div>
+</nav>
+<div id="main_wrap">
+			<p class="ntc"><%= notice %>
+			<p class="alt"><%= alert %> 
+
+	<%= yield %>
+</div>
+</body>
+</html>
